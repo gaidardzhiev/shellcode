@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ $(uname -m) = armv6l];
+if [ $(uname -m) = armv6l ];
 then 
 	echo 0 > /proc/sys/kernel/randomize_va_space
 	as arm_rev_sh.s -o arm_rev_sh.o
