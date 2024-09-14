@@ -11,4 +11,4 @@ revsh: revsh.c
 	$(CC) revsh.c -o revsh
 
 clean:
-	rm revsh inject spawn_shell spawn_shell.o run arm_rev_sh.o arm_rev_sh arm_rev_sh.bin shellcode
+	rm revsh inject spawn_shell spawn_shell.o run arm_rev_sh.o arm_rev_sh arm_rev_sh.bin shellcode0 arm_bind_sh.o arm_bind_sh arm_bind_sh.bin shellcode1
